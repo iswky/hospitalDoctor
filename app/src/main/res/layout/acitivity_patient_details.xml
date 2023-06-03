@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/fioTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ФИО"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Возраст"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/bedTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Койка"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/comeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Дата поступления"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/fromTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Отделение"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/doctorTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Врач"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ibButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="История болезни"
+            android:textColor="#FFFFFF"
+            android:background="#009688"
+            android:layout_marginTop="24dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/diagnosButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Диагнозы"
+            android:textColor="#FFFFFF"
+            android:background="#009688"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

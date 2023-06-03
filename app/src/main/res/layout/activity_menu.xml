@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <!-- Кнопка "Красная" -->
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:id="@+id/btnRed"
+        android:layout_width="207dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="100"
+        android:background="#FF1759"
+        android:onClick="startRed"
+        android:padding="37dp"
+        android:paddingStart="47dp"
+        android:text="Тяжелые пациенты"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Кнопка "Желтая" -->
+
+    <!-- Кнопка "Зеленая" -->
+
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:id="@+id/btnYellow"
+        android:layout_width="207dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="100"
+        android:background="#FFDC00"
+        android:onClick="startYellow"
+        android:padding="37dp"
+        android:paddingStart="47dp"
+        android:text="Пациенты средней тяжести"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGreen"
+        android:layout_width="207dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="100"
+        android:background="#00FF04"
+        android:onClick="startGreen"
+        android:padding="47dp"
+        android:text="Удовлетворительные пациенты"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
