@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.patact.R;
@@ -21,12 +22,14 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class redActivity extends AppCompatActivity implements PatientAdapter.OnItemClickListener {
+public class RedActivity extends AppCompatActivity implements PatientAdapter.OnItemClickListener {
+
+    private List<Patient> redList;
+    private PatientAdapter patientAdapter;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        List<Patient> redList = new ArrayList<>();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_red);
 
@@ -41,6 +44,8 @@ public class redActivity extends AppCompatActivity implements PatientAdapter.OnI
         Type patientListType = new TypeToken<List<Patient>>() {}.getType();
         List<Patient> patientList = new Gson().fromJson(jsonResponse, patientListType);
 
+        redList = new ArrayList<>();
+
         // Проход по всем элементам списка пациентов
         for (Patient patient : patientList) {
             String prof = patient.getProf();
@@ -53,8 +58,51 @@ public class redActivity extends AppCompatActivity implements PatientAdapter.OnI
         }
 
         // Инициализация адаптера и установка его в RecyclerView
-        PatientAdapter patientAdapter = new PatientAdapter(redList, this);
+        patientAdapter = new PatientAdapter(redList, this);
         recyclerView.setAdapter(patientAdapter);
+
+        // Получение ссылки на SearchView
+        searchView = findViewById(R.id.searchView);
+
+        // Установка слушателя для обработки событий поиска
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Вызывается при нажатии кнопки поиска на клавиатуре или вводе текста и нажатии кнопки поиска
+                performSearch(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Вызывается при изменении текста в поле ввода
+                performSearch(newText);
+                return false;
+            }
+        });
+    }
+
+    // Метод для выполнения поиска
+    private void performSearch(String searchText) {
+        // Создание нового списка для результатов поиска
+        List<Patient> searchResults = new ArrayList<>();
+
+        // Проход по всем элементам списка пациентов
+        for (Patient patient : redList) {
+            String patientName = patient.getFio();
+            if (patientName != null && patientName.contains(searchText)) {
+                // Если имя пациента содержит введенный текст, добавляем его в результаты поиска
+                searchResults.add(patient);
+            }
+        }
+
+        // Обновление списка в адаптере
+        patientAdapter.updateList(searchResults);
+
+        // Проверка, есть ли результаты поиска
+        if (searchResults.isEmpty()) {
+            Toast.makeText(this, "Пациенты не найдены", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -63,7 +111,7 @@ public class redActivity extends AppCompatActivity implements PatientAdapter.OnI
         // Toast.makeText(this, "Вы выбрали: " + patient.getFio(), Toast.LENGTH_SHORT).show();
         // Получение токена из Intent
         String token = getIntent().getStringExtra("token");
-        Intent intent = new Intent(redActivity.this, PatientDetailsActivity.class);
+        Intent intent = new Intent(RedActivity.this, PatientDetailsActivity.class);
         intent.putExtra("patient", patient);
         intent.putExtra("token", token);
         Log.d("Token", token);

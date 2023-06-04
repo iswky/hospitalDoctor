@@ -16,16 +16,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activity.menuActivity"
+            android:name=".activity.MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.yellowActivity"
+            android:name=".activity.YellowActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.redActivity"
+            android:name=".activity.RedActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.greenActivity"
+            android:name=".activity.GreenActivity"
             android:exported="false" />
         <activity
             android:name=".activity.PatientDetailsActivity"

@@ -10,11 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.patact.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHolder> {
-    private final List<Patient> patients;
-    private final OnItemClickListener listener;
+    private List<Patient> patients;
+    private List<Patient> filteredPatients;
+    private OnItemClickListener listener;
 
     public interface OnItemClickListener {
         void onItemClick(Patient patient);
@@ -22,6 +24,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHold
 
     public PatientAdapter(List<Patient> patients, OnItemClickListener listener) {
         this.patients = patients;
+        this.filteredPatients = new ArrayList<>(patients);
         this.listener = listener;
     }
 
@@ -35,7 +38,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Patient patient = patients.get(position);
+        Patient patient = filteredPatients.get(position);
 
         // Задаем значения полей пациента в соответствующие элементы пользовательского интерфейса
         holder.patientNameTextView.setText(patient.getFio() != null ? patient.getFio().concat(" | ") : "null | ");
@@ -48,7 +51,13 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return patients.size();
+        return filteredPatients.size();
+    }
+
+    public void updateList(List<Patient> newList) {
+        filteredPatients.clear();
+        filteredPatients.addAll(newList);
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

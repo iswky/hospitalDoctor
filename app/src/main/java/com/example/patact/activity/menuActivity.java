@@ -34,7 +34,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class menuActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
 
     private String jsonArray;
     private String token;
@@ -102,27 +102,27 @@ public class menuActivity extends AppCompatActivity {
                                                         }
                                                     } else {
                                                         // Обработка ошибки третьего запроса
-                                                        Toast.makeText(menuActivity.this, "Error: " + response3.code(), Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(MenuActivity.this, "Error: " + response3.code(), Toast.LENGTH_SHORT).show();
                                                     }
                                                 }
 
                                                 @Override
                                                 public void onFailure(@NonNull Call<JsonArray> call, @NonNull Throwable t) {
-                                                    Toast.makeText(menuActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(MenuActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                                                 }
                                             });
                                         }
                                     } else {
                                         // Обработка ошибки второго запроса
-                                        Toast.makeText(menuActivity.this, "Error in second request, check your password!", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(menuActivity.this, MainActivity.class);
+                                        Toast.makeText(MenuActivity.this, "Error in second request, check your password!", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(MenuActivity.this, MainActivity.class);
                                         startActivity(intent);
                                     }
                                 }
 
                                 @Override
                                 public void onFailure(@NonNull Call<LoginResponseDto> call, @NonNull Throwable t) {
-                                    Toast.makeText(menuActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MenuActivity.this, "Error", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -134,14 +134,14 @@ public class menuActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(@NonNull Call<ErrorResponseDto> call, @NonNull Throwable t) {
-                Toast.makeText(menuActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MenuActivity.this, "Error", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     public void startRed(View v) {
         if (jsonArray != null) {
-            Intent intent = new Intent(menuActivity.this, redActivity.class);
+            Intent intent = new Intent(MenuActivity.this, RedActivity.class);
             intent.putExtra("jsonArray", jsonArray); // Используем значение jsonArray из поля класса
             intent.putExtra("token", token);
             startActivity(intent);
@@ -152,7 +152,7 @@ public class menuActivity extends AppCompatActivity {
 
     public void startYellow(View v) {
         if (jsonArray != null) {
-            Intent intent = new Intent(menuActivity.this, yellowActivity.class);
+            Intent intent = new Intent(MenuActivity.this, YellowActivity.class);
             intent.putExtra("jsonArray", jsonArray); // Используем значение jsonArray из поля класса
             intent.putExtra("token", token);
             startActivity(intent);
@@ -163,7 +163,7 @@ public class menuActivity extends AppCompatActivity {
 
     public void startGreen(View v) {
         if (jsonArray != null) {
-            Intent intent = new Intent(menuActivity.this, greenActivity.class);
+            Intent intent = new Intent(MenuActivity.this, GreenActivity.class);
             intent.putExtra("jsonArray", jsonArray); // Используем значение jsonArray из поля класса
             intent.putExtra("token", token);
             startActivity(intent);

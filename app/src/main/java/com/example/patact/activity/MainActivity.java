@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 editor.putString("password", password);
                 editor.apply();
 
-                Intent intent = new Intent(this, menuActivity.class);
+                Intent intent = new Intent(this, MenuActivity.class);
                 intent.putExtra("password", password);
                 startActivity(intent);
             }
